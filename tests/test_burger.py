@@ -1,5 +1,3 @@
-from unittest.mock import Mock
-
 from data.data_values import Values
 from praktikum_dir.burger import Burger
 
