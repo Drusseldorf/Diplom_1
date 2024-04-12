@@ -1,8 +1,33 @@
 from data.data_values import Values
 from praktikum_dir.burger import Burger
+import copy as c
 
 
 class TestBurger:
+
+    def test_remove_ingredient(self, mocked_ingredient):
+
+        burger = Burger()
+        burger.add_ingredient(mocked_ingredient)
+        burger.remove_ingredient(0)
+
+        assert len(burger.ingredients) == 0
+
+    def test_move_ingredient(self, mocked_ingredient):
+
+        burger = Burger()
+        # для проверки в асерте нам необходимо, чтобы были разные ссылки на объекты в памяти
+        # Иначе всегда получали бы успешный результат
+        # Решил использовать copy()
+        [burger.add_ingredient(c.copy(mocked_ingredient)) for _ in range(2)]
+
+        before_move_ingredient = burger.ingredients[0]
+
+        burger.move_ingredient(0, 1)
+
+        after_move_ingredient = burger.ingredients[1]
+
+        assert before_move_ingredient == after_move_ingredient
 
     def test_get_price(self, mocked_bun, mocked_ingredient):
 
