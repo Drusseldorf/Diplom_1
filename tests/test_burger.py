@@ -16,6 +16,7 @@ class TestBurger:
     def test_move_ingredient(self, mocked_ingredient):
 
         burger = Burger()
+
         # для проверки в асерте нам необходимо, чтобы были разные ссылки на объекты в памяти
         # Иначе всегда получали бы успешный результат
         # Решил использовать copy()
